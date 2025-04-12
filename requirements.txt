@@ -1,0 +1,12 @@
+fastapi==0.68.1
+uvicorn[standard]==0.15.0
+requests==2.26.0
+aiofiles==0.7.0
+pydantic==1.8.2
+numpy==1.21.2
+librosa==0.8.1
+numba==0.53.1
+scikit-learn==1.0.2
+torch==1.13.1  # Remove the +cpu suffix
+torchaudio==0.13.1  # Remove the +cpu suffix
+# Add any other dependencies your application requires

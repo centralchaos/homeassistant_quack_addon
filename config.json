@@ -1,0 +1,15 @@
+{
+  "name": "Audio Processor",
+  "version": "1.0",
+  "slug": "audio_processor",
+  "description": "An add-on to process audio files using FastAPI",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "application",
+  "boot": "auto",
+  "options": {},
+  "schema": {},
+  "ports": {
+    "1201/tcp": 1200
+  },
+  "webui": "http://[HOST]:[PORT:1201]"
+}

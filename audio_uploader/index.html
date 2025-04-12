@@ -1,0 +1,63 @@
+<!-- home_assistant_addon/audio_uploader/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Uploader</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .upload-form { display: flex; flex-direction: column; }
+        .upload-form input { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Audio File</h1>
+        <form class="upload-form" id="uploadForm">
+            <input type="file" id="audioFile" accept=".wav" required>
+            <button type="submit">Upload and Process</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('audioFile');
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('http://localhost:1200/api/v1/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                const jobId = data.job_id;
+                document.getElementById('result').innerText = `Job ID: ${jobId}`;
+
+                // Poll for results
+                const pollInterval = setInterval(async () => {
+                    const statusResponse = await fetch(`http://localhost:1200/api/v1/status/${jobId}`);
+                    const statusData = await statusResponse.json();
+
+                    if (statusData.status === 'completed') {
+                        clearInterval(pollInterval);
+                        document.getElementById('result').innerText = `Analysis Complete: ${JSON.stringify(statusData.result)}`;
+                    } else if (statusData.status === 'failed') {
+                        clearInterval(pollInterval);
+                        document.getElementById('result').innerText = 'Analysis Failed';
+                    }
+                }, 2000); // Poll every 2 seconds
+            } catch (error) {
+                console.error('Error uploading file:', error);
+                document.getElementById('result').innerText = 'Error uploading file';
+            }
+        });
+    </script>
+</body>
+</html>

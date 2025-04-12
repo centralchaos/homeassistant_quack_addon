@@ -19,6 +19,9 @@ COPY ./app /app/app
 # Copy the audio_uploader folder
 COPY ./audio_uploader /app/audio_uploader
 
+# Create the upload directory
+RUN mkdir -p /app/uploads
+
 # Expose the internal port for the FastAPI application
 EXPOSE 5000
 

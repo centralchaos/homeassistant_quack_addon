@@ -9,4 +9,5 @@ numba==0.53.1
 scikit-learn==1.0.2
 torch==1.13.1  # Remove the +cpu suffix
 torchaudio==0.13.1  # Remove the +cpu suffix
+python-multipart
 # Add any other dependencies your application requires

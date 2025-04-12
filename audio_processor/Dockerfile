@@ -20,7 +20,7 @@ COPY ./app /app/app
 COPY ./audio_uploader /app/audio_uploader
 
 # Expose the internal port for the FastAPI application
-EXPOSE 1200
+EXPOSE 5000
 
 # Command to run the FastAPI application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "1200"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000"]

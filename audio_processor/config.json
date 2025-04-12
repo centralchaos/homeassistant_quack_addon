@@ -11,5 +11,5 @@
   "ports": {
     "1201/tcp": 1200
   },
-  "webui": "http://192.168.1.9:1201"
+  "webui": "http://[HOST]:[PORT:1201]"
 }

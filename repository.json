@@ -1,5 +1,5 @@
 {
-    "name": "my_addon",
+    "name": "Quack Addon",
     "url": "https://github.com/centralchaos/homeassistant_quack_addon",
     "maintainer": "Jose Carlo Sia <sia.josecarlo@gmail.com>"
   }

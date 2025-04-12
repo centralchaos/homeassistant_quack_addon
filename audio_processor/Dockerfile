@@ -16,6 +16,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application code
 COPY ./app /app/app
 
+# Copy the audio_uploader folder
+COPY ./audio_uploader /app/audio_uploader
+
 # Expose the internal port for the FastAPI application
 EXPOSE 1200
 

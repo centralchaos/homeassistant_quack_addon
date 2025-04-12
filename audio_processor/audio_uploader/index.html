@@ -32,7 +32,7 @@
             formData.append('file', file);
 
             try {
-                const response = await fetch('http://localhost:1200/api/v1/analyze', {
+                const response = await fetch('http://192.168.1.7:1200/api/v1/analyze', {
                     method: 'POST',
                     body: formData
                 });
@@ -42,7 +42,7 @@
 
                 // Poll for results
                 const pollInterval = setInterval(async () => {
-                    const statusResponse = await fetch(`http://localhost:1200/api/v1/status/${jobId}`);
+                    const statusResponse = await fetch(`192.168.1.7:1200/api/v1/status/${jobId}`);
                     const statusData = await statusResponse.json();
 
                     if (statusData.status === 'completed') {

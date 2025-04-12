@@ -9,7 +9,7 @@
   "options": {},
   "schema": {},
   "ports": {
-    "1201/tcp": 1200
+    "5000/tcp": 5000
   },
-  "webui": "http://[HOST]:[PORT:1201]"
+  "webui": "http://[HOST]:[PORT:5000]"
 }
